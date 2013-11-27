@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheHeuristicHetmans", "TheHeuristicHetmans\TheHeuristicHetmans.csproj", "{34EFECFE-FCCD-489A-A7C9-13A674D25C4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheHeuristicHetmans.UnitTest", "TheHeuristicHetmans.UnitTest\TheHeuristicHetmans.UnitTest.csproj", "{21BE0CEB-65AF-4C14-9758-320EE4C7FEC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34EFECFE-FCCD-489A-A7C9-13A674D25C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34EFECFE-FCCD-489A-A7C9-13A674D25C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34EFECFE-FCCD-489A-A7C9-13A674D25C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34EFECFE-FCCD-489A-A7C9-13A674D25C4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21BE0CEB-65AF-4C14-9758-320EE4C7FEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21BE0CEB-65AF-4C14-9758-320EE4C7FEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21BE0CEB-65AF-4C14-9758-320EE4C7FEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21BE0CEB-65AF-4C14-9758-320EE4C7FEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

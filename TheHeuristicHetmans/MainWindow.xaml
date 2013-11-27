@@ -1,0 +1,11 @@
+﻿<Window x:Class="TheHeuristicHetmans.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Heurystyczne Rozmieszczanie Hetmanów by Mariusz Kielan" Height="364" Width="756">
+    <Grid>
+        <Label Content="Liczba Hetmanów:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="106" Margin="9,0,0,0"/>
+        <TextBox x:Name="txbHetmansCount" HorizontalAlignment="Left" Height="23" Margin="120,3,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="97"/>
+        <Button x:Name="btnSolve" Content="Znajdź rozwiązanie" HorizontalAlignment="Left" Margin="222,4,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="btnSolve_Click"/>
+        <DataGrid x:Name="dgdChessboard" Margin="9,31,10,10" IsReadOnly="True" LoadingRow="dgdChessboard_LoadingRow" CanUserSortColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False"/>
+    </Grid>
+</Window>
