@@ -20,7 +20,7 @@ namespace TheHeuristicHetmans.Core
             var variants = new List<StepVariant>();
 
             var backCount = 0;
-            var stepCount = 0;
+            var stepCount = -1;
             variants.Add(new StepVariant { Board = new Board(n), Rating = 1 });
 
             var currentElement = 0;
@@ -30,17 +30,19 @@ namespace TheHeuristicHetmans.Core
                 stepCount++;
 
                 variants.RemoveAt(currentElement);
+                var complete = variant.Board.Complete;
+                var withoutConflicts = variant.Board.WithoutConflict;
 
-                if (variant.Board.Complete && variant.Board.WithoutConflict)
+                if (complete && withoutConflicts)
                 {
                     break; //rozwiązanie
                 }
                 else
                 {//przejście do następnego możliwego wieżchołka
 
-                    if (!variant.Board.Complete) //dodanie ewentualnych wariantów kolejnego kroku
+                    if (!complete) //dodanie ewentualnych wariantów kolejnego kroku
                     {
-                        if (variant.Board.WithoutConflict)
+                        if (withoutConflicts)
                         {
                             var newv = GenerateVariantsForCurrent(variant);
 
@@ -59,7 +61,7 @@ namespace TheHeuristicHetmans.Core
                     }
 
                     //wybranie najlepszego niesprawdzonego elementu
-                    variant = variants.FirstOrDefault(v => v.Rating == variants.Max(x => x.Rating));
+                    variant = variants.FirstOrDefault(v => v.Rating == variants.Min(x => x.Rating));
                     currentElement = variants.IndexOf(variant);
                 }
             }
@@ -84,46 +86,23 @@ namespace TheHeuristicHetmans.Core
             var length = variant.Board.Length;
 
             #region oszacowanie wiersza
-            //while (row < length)
-            //{
-            //    var i = 0;
-            //    for (; i < length; i++)
-            //    {
-            //        if (variant.Board.Spacing[row, i] == true)
-            //        {
-            //            break;
-            //        }
-            //    }
 
-            //    if (i < length) row++;
-            //    else break;
-            //}
-
-            while (row < length)
+            for (; row < length; row++)
             {
-                var i = 0;
-                for (; i < length; i++)
+                if (variant.Board.Spacing[row] == -1)
                 {
-                    //if (variant.Board.Spacing[row, i] == true)
-                    if (variant.Board.Spacing[row] == i)
-                    {
-                        break;
-                    }
+                    break;
                 }
-
-                if (i < length) row++;
-                else break;
+                else if (row == length - 1) return null;
             }
-            //row++;
             #endregion
 
             #region generowanie wariantów
 
             var list = new List<StepVariant>();
             for (var i = 0; i < length; i++)
-            {//todo bo robiona jest płytka kopia, referencja
+            {
                 var copy = variant.Clone() as StepVariant;
-                //copy.Board.Spacing[row, i] = true;
                 copy.Board.Spacing[row] = i;
                 list.Add(copy);
             }

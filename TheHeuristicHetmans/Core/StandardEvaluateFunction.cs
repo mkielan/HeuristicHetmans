@@ -10,22 +10,27 @@ namespace TheHeuristicHetmans.Core
     {
         public double Evaluation(StepVariant variant)
         {
-            //todo
-            if (!variant.Board.WithoutConflict) return -1;
+            if (!variant.Board.WithoutConflict) return 1;
+            if (variant.Board.Complete) return 0;
 
-            var count = 0;
-            for (var i = 0; i < variant.Board.Length; i++)
+            var length = variant.Board.Length;
+            var last = 0;
+            var l = 0;
+
+            for (; l < length; l++)
             {
-                if(variant.Board.Spacing[i] >= 0) count++;
+                if (variant.Board.Spacing[l] == -1)
+                {
+                    if (l == 0) return 0;
+
+                    last = variant.Board.Spacing[l-1];
+                    break;
+                }
             }
 
-            if (count % 1 == 1)
-            {
-                return 0.8;
-            }
-            else return 0.9;
+            var wsp = last == 0 || last == 2 ? 0.05 : 0.1;
 
-            //return 0.0;
+            return wsp * (length - l)/length;
         }
     }
 }

@@ -11,14 +11,12 @@ namespace TheHeuristicHetmans.Core
         /// <summary>
         /// Rozstawienie hetmanów na planszy
         /// </summary>
-        //public bool[,] Spacing { get; private set; }
         public int[] Spacing { get; private set; }
         public int Length 
         {
             get 
             {
                 return Spacing.Length;
-                //return Spacing.GetLength(0);
             }
         }
 
@@ -26,21 +24,6 @@ namespace TheHeuristicHetmans.Core
         {
             get
             {
-                /*for (var i = 0; i < Length; i++)
-                {
-                    for (var j = 0; j < Length; j++)
-                    {
-                        if (Spacing[i, j] == true)
-                        {
-                            if (SearchFor(i, j))
-                            {
-                                return false;
-                            }
-
-                            break;
-                        }
-                    }
-                }*/
                 var list = new List<int>();
 
                 for (var i = 1; i < Length; i++)
@@ -73,7 +56,6 @@ namespace TheHeuristicHetmans.Core
             {
                 for (var pozY = y > 0 ? y - 1 : y; pozY <= y + 1 && pozY < Length; pozY++)
                 {
-                    //if (!(pozX == x && pozY == y) && Spacing[pozX, pozY])
                     if (!(pozX == x && pozY == y) && Spacing[pozX] == pozY)
                     {
                         return true;
@@ -90,19 +72,7 @@ namespace TheHeuristicHetmans.Core
         public bool Complete
         {
             get
-            {/*
-                var sum = 0;
-                for (var i = 0; i < Length; i++)
-                {
-                    for (var j = 0; j < Length; j++)
-                    {
-                        sum += Spacing[i, j] == true ? 1 : 0;
-                    }
-                }
-                */
-
-                //return sum == Length;
-
+            {
                 foreach (var i in Spacing)
                 {
                     if (i < 0) return false;
@@ -114,7 +84,6 @@ namespace TheHeuristicHetmans.Core
 
         public Board(int n)
         {
-            //Spacing = new bool[n,n];
             Spacing = new int[n];
 
             for(var i = 0; i < n; i++) Spacing[i] = -1;
@@ -124,7 +93,6 @@ namespace TheHeuristicHetmans.Core
         {
             var obj = new Board(Length);
 
-            //obj.Spacing = (bool[,]) Spacing.Clone();
             obj.Spacing = (int[])Spacing.Clone();
 
             return obj;
